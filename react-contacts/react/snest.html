@@ -1,0 +1,52 @@
+<!COCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>组件嵌套</title>
+        
+    </head>
+    <body>
+	<!-- 必须引入 -->
+	 <script src="./buildd/react.js"></script>
+	 <script src="./buildd/react-dom.js"></script>
+	 <script src="./buildd/browser.js"></script>
+	 <!-- 自己写的一个容器 -->
+	 <div id="container"> </div>
+	 
+	 <script type="text/babel"> 
+		 /* 
+			* 
+			*
+		*/
+		
+		var Message=React.createClass({
+			 render:function(){
+				 return (
+					<h1>欢迎你：<Abc/></h1>
+				 )
+			 },
+		});
+		
+		var Abc=React.createClass({
+			 render:function(){
+				 return(
+					 <span> ABC</span>
+				 );
+			 },
+			 
+		})
+		
+		
+		ReactDOM.render(
+			 <Message />,
+			 document.getElementById('container'),
+			 function(){
+				 console.log('渲染完成 ');
+			 }
+		)
+		
+	 </script>
+	
+	
+    </body>
+</html>	

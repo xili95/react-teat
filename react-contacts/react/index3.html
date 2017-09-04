@@ -1,0 +1,67 @@
+<!COCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        
+    </head>
+    <body>
+	<!-- 必须引入 -->
+	 <script src="./buildd/react.js"></script>
+	 <script src="./buildd/react-dom.js"></script>
+	 <script src="./buildd/browser.js"></script>
+	 <!-- 自己写的一个容器 -->
+	 <div id="container"> </div>
+	 
+	 <style type="text/css"> 
+		 .abc{
+			 background:red;
+		 }
+	  
+	 </style>
+	 
+	 
+	 <script type="text/babel"> 
+		 var  style={
+			 background:'green';
+		 };
+		 //创建我们第一个组件
+		 var Message=React.createClass({
+			render:function(){
+			
+				// if(true){
+				 
+					// return <h4> ZXC</h4>
+				// }
+			
+				 return (
+					 <h1 className="abc"> ABC</h1>
+					 <div> 
+						 { 
+						 //true?<h2 style={style}> ASD</h2>:<h2>QWE</h2>
+						 //true||<h2 style={style}> ASD</h2>
+						 //false||<h2 style={style}> ASD</h2>
+						 }
+					 </div>
+					 
+				 )
+			},
+		 });
+		 
+		 //渲染我们的组件
+		 ReactDOM.render(
+			 //我们要渲染的组件
+			 <div style={style}> <message/></div>,
+			 //我们想要把组件渲染到什么位置
+			 document.getElementById('container'),
+			 //渲染成功的回调函数
+			 function(){
+				 console.log('渲染完成 ');
+			 }
+		 );
+	 
+	 </script>
+	
+	
+    </body>
+</html>	

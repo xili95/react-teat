@@ -1,0 +1,67 @@
+<!COCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>双向绑定数据流</title>
+        
+    </head>
+    <body>
+	<!-- 必须引入 -->
+	 <script src="./buildd/react.js"></script>
+	 <script src="./buildd/react-dom.js"></script>
+	 <script src="./buildd/browser.js"></script>
+	 <!-- 自己写的一个容器 -->
+	 <div id="container"> </div>
+	 
+	 <script type="text/babel"> 
+		 /* 
+			* 
+			*
+		*/
+		
+		var Message=React.createClass({
+			 getInitialState:function(){
+				 return{
+					 content:'',
+				 }
+			 },
+			 changeEvent:function(e){
+				 this.setState({
+					 content:e.target.value
+				 })
+			 },
+			 render:function(){
+				 
+				 return (
+					<div>
+						<input onChange={this.changeEvent} type="text" value={this.state.content} />
+						<Show content={this.state.content}/>
+					</div>
+				 );
+			 },
+		});
+		
+	     var Show=React.createClass({
+			 
+			 render:function(){
+				 return (
+					 <div className="div">{this.props.content}</div>
+				 )
+			 },
+		 })
+	
+	
+		
+		ReactDOM.render(
+			 <Message />,
+			 document.getElementById('container'),
+			 function(){
+				 console.log('渲染完成 ');
+			 }
+		)
+		
+	 </script>
+	
+	
+    </body>
+</html>	

@@ -1,0 +1,55 @@
+<!COCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        
+    </head>
+    <body>
+	<!-- 必须引入 -->
+	 <script src="./buildd/react.js"></script>
+	 <script src="./buildd/react-dom.js"></script>
+	 <script src="./buildd/browser.js"></script>
+	 <!-- 自己写的一个容器 -->
+	 <div id="container"> </div>
+	 
+	 <script type="text/babel"> 
+		//组件状态 state
+		//每一次state内的值发生改变，都会从新执行render方法来进行渲染
+		//diff算法，会来计算哪里发生了改变，只从新渲染改变的地方
+		var Message=React.createClass({
+			 getInitialState:function(){
+				 return({
+					 name:'abc',
+				 })
+			 },
+			 changeState:function(){
+				 //改变name的值
+				 this.setState({
+					 name:'zxc',
+				 })
+			 },
+			 render:function(){
+				 return( <h1 onClick={this.changeState}> 欢迎你：{this.state.name}//获得state里的name
+				 </h1>)
+			 
+			 },
+		
+		});
+		
+		ReactDOM.render(
+			 <message/>,
+			 document.getElementById('container'),
+			 function(){
+			         console.log('渲染完成')
+			 }
+		)
+		
+		
+		
+		
+	 </script>
+	
+	
+    </body>
+</html>	

@@ -1,0 +1,52 @@
+<!COCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        
+    </head>
+    <body>
+	<!-- 必须引入 -->
+	 <script src="./buildd/react.js"></script>
+	 <script src="./buildd/react-dom.js"></script>
+	 <script src="./buildd/browser.js"></script>
+	 <!-- 自己写的一个容器 -->
+	 <div id="container"> </div>
+	 
+	 <script type="text/babel"> 
+		 /* 
+			* 组件通讯 props
+			*原则：大多数是父组件向子组件进行通讯
+		*/
+		
+		var Message=React.createClass({
+			 changeText:function(){
+				 alert('我被子组件调用了');
+			 },
+			 render:function(){
+				 return (
+					 <h1> 父组件{this.props.name}--  <Child  name="ABC" changeText={this.changeText}/> </h1>
+				 )
+			 
+			 },
+		});
+		var Child=React.createClass({
+			 render:function(){
+				 return(
+					 <span onClick={this.props.changeText}>子组件接收到了：{this.props.name}</span>
+				 )
+			 },
+		})
+		ReactDOM.render(
+			 <Message name="ZXC"/>,
+			 document.getElementById('container'),
+			 function(){
+				 console.log('渲染完成 ');
+			 }
+		)
+		
+	 </script>
+	
+	
+    </body>
+</html>	
